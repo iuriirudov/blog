@@ -1,0 +1,10 @@
+<ul>
+    <% posts.forEach(post => { %>
+    <li><%= post.category.name %></li>
+    <% }) %>
+</ul>
+<div>
+    <% posts.forEach(post => { %>
+    <div><a href="/post/<%= post._id %>"><%= post.title %></a></div>
+    <% }) %>
+</div>
