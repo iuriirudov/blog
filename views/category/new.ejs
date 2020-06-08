@@ -1,6 +1,6 @@
 <h1>New Category</h1>
-<form action="/category" method="post">
+<form action="/category/<%= category._id %>" method="POST">
     <label for="name">Name: </label>
-        <input type="text" name="name" id="name">
+    <input type="text" name="name" id="name">
     <button type="submit">Add</button>
 </form>

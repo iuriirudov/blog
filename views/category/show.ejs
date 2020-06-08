@@ -1,1 +1,11 @@
 <h1>Show Category</h1>
+<a href="/category/<%= category._id %>/edit"><%= category.name %></a> (Edit)
+<%- include('../partials/deleteBtn.ejs', {url: `/category/${category._id}`}) %>
+<div>
+    <ul>
+        <% posts.forEach(post => { %>
+            <li><a href="/post/<%= post._id %>"><%= post.title %></a></li>
+
+        <% }) %>
+    </ul>
+</div>

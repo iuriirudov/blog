@@ -7,3 +7,7 @@
     <li>views: <%= post.views %></li>
     <li>active: <%= post.active %></li>
 </ul>
+<a href="/post/<%= post._id %>/edit">Edit</a>
+<form action="/post/<%= post._id %>?_method=DELETE" method="post">
+    <button type="submit">Delete</button>
+</form>

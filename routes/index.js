@@ -7,14 +7,16 @@ router.get('/', async(req, res) => {
     let page = {title: 'Homepage'}
     try {
         const posts = await Post
-        .find()
+        .find({'active': true})
         .sort({_id: -1})
         .limit(10)
         .populate('category')
         .exec()
+        const categories = await Category.find()
         res.render('index', {
             page,
-            posts
+            posts,
+            categories
         })
     } catch {
         res.send('INTERNAL ERROR')

@@ -1,6 +1,6 @@
 <ul>
-    <% posts.forEach(post => { %>
-    <li><%= post.category.name %></li>
+    <% categories.forEach(category => { %>
+    <li><a href="/category/<%= category._id %>"><%= category.name %></a></li>
     <% }) %>
 </ul>
 <div>
