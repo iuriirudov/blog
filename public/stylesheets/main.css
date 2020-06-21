@@ -1,0 +1,43 @@
+@import 'shared/variables.css';
+@import 'shared/fonts.css';
+@import 'shared/buttons.css';
+@import 'shared/forms.css';
+@import 'shared/header.css';
+@import 'shared/footer.css';
+@import 'shared/article.css';
+@import 'shared/grid.css';
+
+:root {
+    font-family: var(--body-font-family);
+    color: var(--post-text-color);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: var(--body-background);
+}
+
+.container {
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+.border {
+    border: 1px solid greenyellow
+}
+
+.text-center {
+    text-align: center;
+}
+.transition {
+    transition: ease all 0.2s;
+}
+.admin-tools {
+    padding: 3rem 0;
+}

@@ -1,10 +1,24 @@
-<ul>
-    <% categories.forEach(category => { %>
-    <li><a href="/category/<%= category._id %>"><%= category.name %></a></li>
-    <% }) %>
-</ul>
-<div>
-    <% posts.forEach(post => { %>
-    <div><a href="/post/<%= post._id %>"><%= post.title %></a></div>
-    <% }) %>
-</div>
+<section>
+    <div class="container">
+        <div class="grid">
+            <% posts.forEach(post => { %>
+            <div class="card">
+                <div class="card-body">
+                    <div class="post-block-thumbnail" style="background: url('/uploads/image.jpg') center; background-size: cover;">
+                        <div>
+                            <a href="/category/<%= post.category._id %>" class="btn"><%= post.category.name %></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-block-text">
+                    <h4 class="post-block-title">
+                        <a href="/post/<%= post._id %>" class="post-block-title-link transition"><%= post.title %></a>
+                    </h4>
+                    <p class="post-block-summary"><%= post.summary %></p>
+                    <p class="post-block-date"><i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp;<%= post.date.toDateString() + ' at ' + post.date.toLocaleTimeString('en-US') %></p>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+</section>

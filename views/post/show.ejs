@@ -1,13 +1,36 @@
-<h2>Show Post: <%= post.title %></h2>
-<ul>
-    <li>name: <%= post.category.name %></li>
-    <li>content: <%= post.content %></li>
-    <li>summary: <%= post.summary %></li>
-    <li>date: <%= post.date %></li>
-    <li>views: <%= post.views %></li>
-    <li>active: <%= post.active %></li>
-</ul>
-<a href="/post/<%= post._id %>/edit">Edit</a>
-<form action="/post/<%= post._id %>?_method=DELETE" method="post">
-    <button type="submit">Delete</button>
-</form>
+<section>
+    <div class="article-header-section" style="background: url('/uploads/image.jpg') center; background-size: cover;">
+        <div class="container">
+            <div class="article-header">
+                <p class="article-category text-center"><%= post.category.name %></p>
+                <h1 class="article-title text-center"><%= post.title %></h1>
+                <p class="article-summary text-center"><%= post.summary %></p>
+                <p class="article-date">Published on <%= post.date.toDateString() + ' at ' + post.date.toLocaleTimeString('en-US') %></p>
+            </div>
+        </div>
+    </div>
+    <div class="article-section">
+        <div class="container">
+            <div class="article">
+                <p><%- post.content %></p>
+            </div>
+            <div class="article-bottom">
+                <div class="article-tags">Tags:
+                    <a href="#" class="transition">article</a>
+                    <a href="#" class="transition">One</a>
+                    <a href="#" class="transition">Two</a>
+                    <a href="#" class="transition">Tag Three</a>
+                </div>
+                <div>
+                    Total views: <%= post.views %> times
+                </div>
+            </div>
+            <div class="admin-tools text-center">
+                <a href="/post/<%= post._id %>/edit" class="btn">Edit</a>
+                <form action="/post/<%= post._id %>?_method=DELETE" method="post" class="form-delete">
+                    <button type="submit" class="btn btn-red">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

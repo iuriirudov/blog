@@ -66,7 +66,7 @@ router.route('/:id')
 })
 .put([
     check('title').escape().trim().isLength({ min: 3 }).withMessage('Must be at least 3 chars long'),
-    check('content').trim().isLength({ min: 10 }).withMessage('Must be at least 10 chars long'),
+    check('content').unescape().trim().isLength({ min: 10 }).withMessage('Must be at least 10 chars long'),
     check('summary').trim().isLength({ min: 10 }).withMessage('Must be at least 10 chars long'),
     check('category').escape().trim().isLength({ min: 24, max: 24 }).withMessage('Must be an ID'),
     check('active').toBoolean()

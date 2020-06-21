@@ -1,0 +1,26 @@
+.footer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 2rem 0;
+    color: #E9C46A;
+}
+
+footer {
+    background-color: #3C474B;
+}
+
+.footer-links-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-links-list > li > a {
+    color: rgb(196, 196, 196);
+    line-height: 2rem;
+    text-decoration: none;
+}
+.footer-links-list > li > a:hover {
+    color: white;
+}
