@@ -1,6 +1,12 @@
-<h1>New Category</h1>
-<form action="/category/<%= category._id %>" method="POST">
-    <label for="name">Name: </label>
-    <input type="text" name="name" id="name">
-    <button type="submit">Add</button>
-</form>
+<section>
+    <div class="container text-center padding-y">
+        <h1>New Category</h1>
+        <form action="/category/<%= category._id %>" method="POST">
+            <div class="padding-y">
+                <label for="name">Name: </label>
+                <input type="text" name="name" id="name">
+            </div>
+            <button type="submit" class="btn">Add</button>
+        </form>
+    </div>
+</section>

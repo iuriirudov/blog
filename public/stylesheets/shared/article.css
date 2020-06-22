@@ -50,15 +50,17 @@
 }
 
 .article-tags > a {
+    text-decoration: none;
+    font-weight: 400;
     display: inline-block;
     border: 1px solid #E76F51;
-    color: #E76F51;
     padding: 4px 5px;
     text-transform: uppercase;
+    background-color: #E76F51;
+    color: white;
 }
 .article-tags > a:hover {
-    color: white;
-    background-color: #E76F51;
+    background-color: #e6471f;
 }
 mark {
     background-image: linear-gradient(55deg, #E9C46A, #F4A261 51%, #E76F51);

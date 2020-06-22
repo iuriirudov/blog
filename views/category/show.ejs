@@ -1,11 +1,27 @@
-<h1>Show Category</h1>
-<a href="/category/<%= category._id %>/edit"><%= category.name %></a> (Edit)
-<%- include('../partials/deleteBtn.ejs', {url: `/category/${category._id}`}) %>
-<div>
-    <ul>
-        <% posts.forEach(post => { %>
-            <li><a href="/post/<%= post._id %>"><%= post.title %></a></li>
-
-        <% }) %>
-    </ul>
-</div>
+<section>
+    <div class="container">
+        <div class="text-right padding-y">
+            <a href="/post/new" class="btn">New Post</a>
+            <a href="/category/<%= category._id %>/edit" class="btn">Edit Category Name</a>
+            <%- include('../partials/deleteBtn.ejs', {url: `/category/${category._id}`}) %>
+        </div>
+    </div>
+    <div class="container">
+        <div class="grid">
+            <% posts.forEach(post => { %>
+            <div class="card">
+                <div class="card-body">
+                    <div class="post-block-thumbnail" style="background: url('/uploads/image.jpg') center; background-size: cover;"></div>
+                </div>
+                <div class="post-block-text">
+                    <h4 class="post-block-title">
+                        <a href="/post/<%= post._id %>" class="post-block-title-link transition"><%= post.title %></a>
+                    </h4>
+                    <p class="post-block-summary"><%= post.summary %></p>
+                    <p class="post-block-date"><i class="fa fa-clock-o" aria-hidden="true"></i> &nbsp;<%= post.date.toDateString() + ' at ' + post.date.toLocaleTimeString('en-US') %></p>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+</section>

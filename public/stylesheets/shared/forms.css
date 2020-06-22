@@ -1,5 +1,6 @@
 input {
     font-family: var(--body-font-family);
+    outline: none;
 }
 button {
     font-family: var(--body-font-family);
@@ -58,4 +59,8 @@ button {
 }
 .btn-red:hover {
     background-color: rgb(161, 0, 0);
+}
+
+.inline {
+    display: inline-block;
 }

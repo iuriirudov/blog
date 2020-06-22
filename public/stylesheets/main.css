@@ -41,3 +41,10 @@ html, body {
 .admin-tools {
     padding: 3rem 0;
 }
+
+.padding-y {
+    padding: 1rem 0;
+}
+.text-right {
+    text-align: right;
+}
