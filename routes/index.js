@@ -13,10 +13,12 @@ router.get('/', async(req, res) => {
         .populate('category')
         .exec()
         const categories = await Category.find()
+        const category = {}
         res.render('index', {
             page,
             posts,
-            categories
+            categories,
+            category
         })
     } catch {
         res.send('INTERNAL ERROR')

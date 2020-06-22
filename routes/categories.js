@@ -29,18 +29,20 @@ router.route('/')
 
 router.route('/new')
 .get(async(req, res) => {
+    const categories = await Category.find()
     let page = {title: 'New Category'}
     let category = {}
-    res.render('category/new', {page, category})
+    res.render('category/new', {page, category, categories})
 })
 
 router.route('/:id')
 .get(async(req, res) => {
     try {
+        const categories = await Category.find()
         const category = await Category.findById(req.params.id)
         const posts = await Post.find({'category': category._id})
         let page = {title: 'Show Category ' + category.name}
-        res.render('category/show', {category, page, posts})
+        res.render('category/show', {category, page, posts, categories})
     } catch {
         res.redirect('/')
     }
@@ -77,9 +79,10 @@ router.route('/:id')
 router.route('/:id/edit')
 .get(async(req, res) => {
     try {
+        const categories = await Category.find()
         const category = await Category.findById(req.params.id)
         let page = {title: 'Edit Category ' + category.name}
-        res.render('category/edit', {category, page})
+        res.render('category/edit', {category, page, categories})
     } catch {
         res.redirect('/')
     }

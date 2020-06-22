@@ -36,8 +36,9 @@ router.route('/new')
     try {
         const categories = await Category.find()
         let page = {title: 'New Post'}
-        let post = {}
-        res.render('post/new', {page, categories, post})
+        const post = {}
+        const category = {}
+        res.render('post/new', {page, categories, post, category})
     } catch {
         res.redirect('/')
     }
@@ -47,9 +48,11 @@ router.route('/:id')
 .get(async(req, res) => {
     let page = {title: 'show post ' + req.params.id}
     try {
+        const categories = await Category.find()
         const post = await Post.findOneAndUpdate({'_id': req.params.id, 'active': true}, {$inc: { views: 1 }}, {new: true}).populate('category')
         if(!post.active) return res.redirect('/')
-        res.render('post/show', {page, post})
+        const category = post.category
+        res.render('post/show', {page, post, categories, category})
     } catch {
         res.redirect('/')
     }
@@ -96,7 +99,8 @@ router.route('/:id/edit')
         const categories = await Category.find()
         const post = await Post.findById(req.params.id).populate('category').exec()
         let page = {title: 'New Post'}
-        res.render('post/edit', {page, categories, post})
+        const category = {}
+        res.render('post/edit', {page, categories, post, category})
     } catch {
         res.redirect('/')
     }

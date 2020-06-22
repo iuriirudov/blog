@@ -12,11 +12,13 @@
     <div class="container">
         <div class="header-flex">
             <ul class="menu-nav">
-                <li><a href="/category/5edd455e7fe5749869058ed3" class="menu-link">Family</a></li>
-                <li><a href="/category/5edc818ecae5a1504ef0eab2" class="menu-link">Life</a></li>
-                <li><a href="/category/5edd45567fe5749869058ed2" class="menu-link">Work</a></li>
-                <li><a href="/category/5ee5ca1a6cbbd70b2f6f297b" class="menu-link">Tips</a></li>
-                <li><a href="/category/5edd45647fe5749869058ed4" class="menu-link">Code</a></li>
+            <% categories.forEach(item => {
+                if(item._id == category.id) { %>
+                <li><a href="/category/<%= item._id %>" class="menu-link active"><%= item.name %></a></li>
+                <% } else { %>
+                <li><a href="/category/<%= item._id %>" class="menu-link"><%= item.name %></a></li>
+                <% }
+            }) %>
             </ul>
         </div>
     </div>
