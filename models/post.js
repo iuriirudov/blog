@@ -25,7 +25,10 @@ const postSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    active: Boolean,
+    active: {
+        type: Boolean,
+        default: true
+    },
     comments: [{
         date: {
             type: Date,

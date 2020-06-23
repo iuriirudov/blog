@@ -1,6 +1,12 @@
-<h1>Edit Category</h1>
-<form action="/category/<%= category._id %>?_method=PUT" method="POST">
-    <label for="name">Name: </label>
-    <input type="text" name="name" id="name" value="<%= category.name %>">
-    <button type="submit">Edit</button>
-</form>
+<section>
+    <div class="container padding-y">
+        <h1>Edit Category</h1>
+        <form action="/category/<%= category._id %>?_method=PUT" method="POST">
+            <div class="form-row">
+                <label for="name">Name: </label>
+                <input type="text" name="name" id="name" value="<%= category.name %>">
+            </div>
+            <button type="submit" class="btn">Save Changes</button>
+        </form>
+    </div>
+</section>

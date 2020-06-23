@@ -1,4 +1,4 @@
-input {
+input, select, textarea {
     font-family: var(--body-font-family);
     outline: none;
 }
@@ -7,7 +7,7 @@ button {
 }
 .header-form > input {
     border: 0;
-    border-radius: 5px 0 0 20px;;
+    border-radius: 5px 0 0 20px;
     padding: .8rem 1rem;
     background-color: white;
     font-size: 1rem;
@@ -63,4 +63,29 @@ button {
 
 .inline {
     display: inline-block;
+}
+
+.form-row {
+    margin-bottom: 1.5rem;
+}
+
+.form-row-radio {
+    padding: .8rem 0;
+}
+
+.form-row > label {
+    display: block;
+}
+.form-row > input[type=text], .form-row > textarea, .form-row > select {
+    width: 100%;
+    font-size: 1rem;
+    padding: .8rem;
+    margin: .5rem 0;
+    border-radius: 5px;
+    border: 0;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 20%);
+    resize: none;
+}
+.form-row > textarea[id=content] {
+    height: 30rem;
 }

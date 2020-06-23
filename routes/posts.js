@@ -10,7 +10,6 @@ router.route('/')
     check('content').trim().isLength({ min: 10 }).withMessage('Must be at least 10 chars long'),
     check('summary').trim().isLength({ min: 10 }).withMessage('Must be at least 10 chars long'),
     check('category').escape().trim().isLength({ min: 24, max: 24 }).withMessage('Must be an ID'),
-    check('active').toBoolean()
 ], async(req, res) => {
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
@@ -22,7 +21,6 @@ router.route('/')
             content: req.body.content,
             summary: req.body.summary,
             category: req.body.category,
-            active: req.body.active
         })
         const newPost = await post.save()
         res.redirect(`/post/${newPost._id}`)
@@ -49,8 +47,7 @@ router.route('/:id')
     let page = {title: 'show post ' + req.params.id}
     try {
         const categories = await Category.find()
-        const post = await Post.findOneAndUpdate({'_id': req.params.id, 'active': true}, {$inc: { views: 1 }}, {new: true}).populate('category')
-        if(!post.active) return res.redirect('/')
+        const post = await Post.findOneAndUpdate({'_id': req.params.id}, {$inc: { views: 1 }}, {new: true}).populate('category')
         const category = post.category
         res.render('post/show', {page, post, categories, category})
     } catch {
@@ -72,7 +69,6 @@ router.route('/:id')
     check('content').unescape().trim().isLength({ min: 10 }).withMessage('Must be at least 10 chars long'),
     check('summary').trim().isLength({ min: 10 }).withMessage('Must be at least 10 chars long'),
     check('category').escape().trim().isLength({ min: 24, max: 24 }).withMessage('Must be an ID'),
-    check('active').toBoolean()
 ], async(req, res) => {
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
@@ -84,8 +80,6 @@ router.route('/:id')
         post.content = req.body.content
         post.summary = req.body.summary
         post.category = req.body.category
-        post.active = req.body.active
-
         await post.save()
         res.redirect(`/post/${post._id}`)
     } catch {

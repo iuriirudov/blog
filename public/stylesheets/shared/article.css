@@ -50,11 +50,11 @@
 }
 
 .article-tags > a {
+    border-radius: 10px 5px;
     text-decoration: none;
     font-weight: 400;
     display: inline-block;
-    border: 1px solid #E76F51;
-    padding: 4px 5px;
+    padding: 4px 7px;
     text-transform: uppercase;
     background-color: #E76F51;
     color: white;

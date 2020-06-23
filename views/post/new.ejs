@@ -1,28 +1,28 @@
-<h1>New Post</h1>
-<form action="/post" method="post">
-    <div>
-        <label for="title">Title: </label>
-        <input type="text" name="title" id="title">
+<section>
+    <div class="container padding-y">
+        <h1>New Post</h1>
+        <form action="/post" method="POST">
+            <div class="form-row">
+                <label for="title">Title: </label>
+                <input type="text" name="title" id="title">
+            </div>
+            <div class="form-row">
+                <label for="content">Content: </label>
+                <textarea name="content" id="content"></textarea>
+            </div>
+            <div class="form-row">
+                <label for="summary">Summary: </label>
+                <textarea name="summary" id="summary"></textarea>
+            </div>
+            <div class="form-row">
+                <label for="category">Category: </label>
+                <select name="category" id="category">
+                <% categories.forEach(category => { %>
+                    <option value="<%= category._id %>"><%= category.name %></option>
+                <% }) %>
+                </select>
+            </div>        
+            <button type="submit" class="btn">Create Post</button>
+        </form>
     </div>
-    <div>
-        <label for="content">content: </label>
-        <input type="text" name="content" id="content">
-    </div>
-    <div>
-        <label for="summary">summary: </label>
-        <input type="text" name="summary" id="summary">
-    </div>
-    <div>
-        <label for="category">category: </label>
-        <select name="category" id="category">
-        <% categories.forEach(category => { %>
-            <option value="<%= category._id %>"><%= category.name %></option>
-        <% }) %>
-        </select>
-    </div>
-    <div>
-        <input type="radio" name="active" value="1" id="active" checked><label for="active">Active</label>
-        <input type="radio" name="active" value="0" id="inactive"><label for="inactive">Inactive</label>
-    </div>
-    <button type="submit">Add</button>
-</form>
+</section>
