@@ -5,6 +5,10 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    headImage: {
+        type: String,
+        default: '/uploads/image.jpg'
+    },
     content: {
         type: String,
         required: true
@@ -28,6 +32,9 @@ const postSchema = new mongoose.Schema({
     active: {
         type: Boolean,
         default: true
+    },
+    tags: {
+        type: Array
     },
     comments: [{
         date: {

@@ -1,5 +1,5 @@
 <section>
-    <div class="article-header-section" style="background: url('/uploads/image.jpg') center; background-size: cover;">
+    <div class="article-header-section" style="background: url('<%= post.headImage %>') center; background-size: cover;">
         <div class="container">
             <div class="article-header">
                 <p class="article-category text-center"><%= post.category.name %></p>
@@ -15,11 +15,13 @@
                 <p><%- post.content %></p>
             </div>
             <div class="article-bottom">
-                <div class="article-tags">Tags:
-                    <a href="#" class="transition">article</a>
-                    <a href="#" class="transition">One</a>
-                    <a href="#" class="transition">Two</a>
-                    <a href="#" class="transition">Tag Three</a>
+                <div class="article-tags">
+                    <% if(post.tags.length > 0) { %>
+                        Tags:
+                        <% post.tags.forEach(tag => { %>
+                            <a href="/post/?tag=<%= tag %>" class="transition"><%= tag %></a>
+                        <% }) %>
+                    <% } %>
                 </div>
                 <div>
                     Total views: <%= post.views %> times

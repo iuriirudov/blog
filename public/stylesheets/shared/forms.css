@@ -85,7 +85,8 @@ button {
     border: 0;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 20%);
     resize: none;
+    background-color: white;
 }
-.form-row > textarea[id=content] {
+.form-row > #content {
     height: 30rem;
 }

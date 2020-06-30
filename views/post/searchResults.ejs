@@ -1,17 +1,21 @@
 <section>
     <div class="container">
-        <div class="text-right padding-y">
-            <a href="/post/new" class="btn">New Post</a>
-            <a href="/category/<%= category._id %>/edit" class="btn">Edit Category Name</a>
-            <%- include('../partials/deleteBtn.ejs', {url: `/category/${category._id}`}) %>
-        </div>
-    </div>
-    <div class="container">
+        <% if(!posts.length) { %>
+            <h1>Nothing matched your search request "<%= searchString %>". Try to change it or make a new one.</h1>
+        <% } else if(posts.length === 1) { %>
+            <h1>Found <%= posts.length %> post matching your request "<%= searchString %>"</h1>
+        <% } else { %>
+            <h1>Found <%= posts.length %> posts matching your request "<%= searchString %>"</h1>
+        <% } %>
         <div class="grid">
             <% posts.forEach(post => { %>
             <div class="card">
                 <div class="card-body">
-                    <div class="post-block-thumbnail" style="background: url('<%= post.headImage %>') center; background-size: cover;"></div>
+                    <div class="post-block-thumbnail" style="background: url('<%= post.headImage %>') center; background-size: cover;">
+                        <div>
+                            <a href="/category/<%= post.category._id %>" class="btn"><%= post.category.name %></a>
+                        </div>
+                    </div>
                 </div>
                 <div class="post-block-text">
                     <h4 class="post-block-title">

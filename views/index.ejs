@@ -4,7 +4,7 @@
             <% posts.forEach(post => { %>
             <div class="card">
                 <div class="card-body">
-                    <div class="post-block-thumbnail" style="background: url('/uploads/image.jpg') center; background-size: cover;">
+                    <div class="post-block-thumbnail" style="background: url('<%= post.headImage %>') center; background-size: cover;">
                         <div>
                             <a href="/category/<%= post.category._id %>" class="btn"><%= post.category.name %></a>
                         </div>
