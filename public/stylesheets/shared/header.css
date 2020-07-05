@@ -8,10 +8,14 @@ nav {
     position: sticky;
     top: 0;
 }
-.header-flex{
+.header-flex {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.nav-flex {
+    display: block;
 }
 
 .logo {
@@ -28,13 +32,14 @@ nav {
 }
 
 .menu-nav {
+    display: none;
     margin: 0 auto;
     padding: 0;
     list-style: none;
     overflow: hidden;
 }
 .menu-nav > li {
-    display: inline-block;
+    display: block;
 }
 .menu-link {
     display: block;
@@ -50,4 +55,25 @@ nav {
 
 .active {
     background-color: #203A44;
+}
+
+.mobile-nav-link {
+    margin: 0 auto;
+}
+
+@media (min-width: 1100px) {
+    .nav-flex {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .mobile-nav-link {
+        display: none;
+    }
+    .menu-nav {
+        display: block;
+    }
+    .menu-nav > li {
+        display: inline-block;
+    }
 }

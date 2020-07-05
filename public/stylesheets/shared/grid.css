@@ -18,7 +18,6 @@
 .post-block-thumbnail {
     min-width: 250px;
     min-height: 100%;
-
 }
 .post-block-text {
     padding: 1rem;
@@ -46,4 +45,14 @@
     font-size: .8rem;
     color: white;
     background-color: #264653;
+}
+
+@media (max-width: 600px) {
+    .card {
+        display: block;
+    }
+    .post-block-thumbnail {
+        min-width: auto;
+        min-height: 200px;
+    }
 }

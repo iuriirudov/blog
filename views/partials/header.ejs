@@ -9,9 +9,9 @@
     </div>
 </header>
 <nav>
-    <div class="container">
-        <div class="header-flex">
-            <ul class="menu-nav">
+    <div>
+        <div class="nav-flex">
+            <ul class="menu-nav" id="mobileNavMenu">
             <% categories.forEach(item => {
                 if(item._id == category.id) { %>
                 <li><a href="/category/<%= item._id %>" class="menu-link active"><%= item.name %></a></li>
@@ -21,6 +21,7 @@
             }) %>
                 <li><a href="/category/new" class="menu-link">Add Category</a></li>
             </ul>
+            <a href="javascript:void(0)" onclick="mobileNav()" class="mobile-nav-link menu-link"><i class="fa fa-bars"></i>&nbsp;&nbsp;Navigation Menu</a>
         </div>
     </div>
 </nav>

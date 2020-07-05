@@ -15,8 +15,11 @@ button {
     -webkit-transition: width .35s ease-in-out;
     transition: width .35s ease-in-out;
 }
-.header-form > input:focus {
-    width: 300px;
+
+@media (min-width: 800px) {
+    .header-form > input:focus {
+        width: 300px;
+    }
 }
 .header-form > button {
     cursor: pointer;
