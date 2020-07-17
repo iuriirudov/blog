@@ -14,11 +14,13 @@ router.get('/', async(req, res) => {
         .exec()
         const categories = await Category.find()
         const category = {}
+        const user = res.locals.user
         res.render('index', {
             page,
             posts,
             categories,
-            category
+            category,
+            user
         })
     } catch {
         res.send('INTERNAL ERROR')

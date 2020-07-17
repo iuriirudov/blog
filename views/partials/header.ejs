@@ -1,7 +1,7 @@
 <header>
     <div class="container">
         <div class="header-flex">
-            <a href="/" class="logo">Blog</a>
+            <a href="/" class="logo">CodeMe</a>
             <form action="/post/" method="get" class="header-form">
                 <input type="search" name="search" id="search" placeholder="Search..."><button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
             </form>
@@ -19,7 +19,9 @@
                 <li><a href="/category/<%= item._id %>" class="menu-link"><%= item.name %></a></li>
                 <% }
             }) %>
+            <% if(user) { %>
                 <li><a href="/category/new" class="menu-link">Add Category</a></li>
+            <% } %>
             </ul>
             <a href="javascript:void(0)" onclick="mobileNav()" class="mobile-nav-link menu-link"><i class="fa fa-bars"></i>&nbsp;&nbsp;Navigation Menu</a>
         </div>

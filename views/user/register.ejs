@@ -1,0 +1,21 @@
+<section>
+    <div class="container padding-y">
+        <h1><%= page.title %></h1>
+        <form action="/user/register" method="POST">
+            <div class="form-row">
+                <label for="name">Name: </label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div class="form-row">
+                <label for="email">Email: </label>
+                <input type="text" name="email" id="email">
+            </div>
+            <div class="form-row">
+                <label for="password">Password: </label>
+                <input type="password" name="password" id="password">
+            </div>
+            <button type="submit" class="btn">Sign In</button>
+        </form>
+        <a href="/user/login">Login</a>
+    </div>
+</section>

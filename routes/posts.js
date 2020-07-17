@@ -3,9 +3,10 @@ const router = express.Router()
 const Category = require('../models/category')
 const Post = require('../models/post')
 const { check, validationResult } = require('express-validator')
+const middleware = require('../middleware/login')
 
 router.route('/')
-.post([
+.post(middleware.redirectLogin, [
     check('title').escape().trim().isLength({ min: 3 }).withMessage('Must be at least 3 chars long'),
     check('content').trim().isLength({ min: 10 }).withMessage('Must be at least 10 chars long'),
     check('summary').trim().isLength({ min: 10 }).withMessage('Must be at least 10 chars long'),
@@ -36,6 +37,7 @@ router.route('/')
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() })
     }
+    const user = res.locals.user
     if(req.query.search) {
         try {
             const regex = {$regex: new RegExp(req.query.search, 'i')}
@@ -48,8 +50,8 @@ router.route('/')
                 ]
             }).populate('category')
             const category = {}
-            const page = {title: `Search for ${req.query.search}`}
-            res.render('post/searchResults', {posts, categories, category, page, searchString: req.query.search})
+            const page = {title: `Search for: ${req.query.search}`}
+            res.render('post/searchResults', {posts, categories, category, page, searchString: req.query.search, user})
         } catch {
             res.redirect('/')
         }
@@ -60,8 +62,8 @@ router.route('/')
             const categories = await Category.find()
             const posts = await Post.find({tags: regex}).populate('category')
             const category = {}
-            const page = {title: `Search for ${request}`}
-            res.render('post/searchResults', {posts, categories, category, page, searchString: request})
+            const page = {title: `Selected tag for: ${request}`}
+            res.render('post/searchResults', {posts, categories, category, page, searchString: request, user})
         } catch {
             res.redirect('/')
         }
@@ -71,13 +73,14 @@ router.route('/')
 })
 
 router.route('/new')
-.get(async(req, res) => {
+.get(middleware.redirectLogin, async(req, res) => {
     try {
         const categories = await Category.find()
         let page = {title: 'New Post'}
         const post = {}
         const category = {}
-        res.render('post/new', {page, categories, post, category})
+        const user = res.locals.user
+        res.render('post/new', {page, categories, post, category, user})
     } catch {
         res.redirect('/')
     }
@@ -85,17 +88,18 @@ router.route('/new')
 
 router.route('/:id')
 .get(async(req, res) => {
-    let page = {title: 'show post ' + req.params.id}
+    const user = res.locals.user
     try {
         const categories = await Category.find()
         const post = await Post.findOneAndUpdate({'_id': req.params.id}, {$inc: { views: 1 }}, {new: true}).populate('category')
         const category = post.category
-        res.render('post/show', {page, post, categories, category})
+        let page = {title: post.title}
+        res.render('post/show', {page, post, categories, category, user})
     } catch {
         res.redirect('/')
     }
 })
-.delete(async(req, res) => {
+.delete(middleware.redirectLogin, async(req, res) => {
     try {
         const post = await Post.findById(req.params.id)
         const category = post.category._id
@@ -105,7 +109,7 @@ router.route('/:id')
         res.redirect('/')
     }
 })
-.put([
+.put(middleware.redirectLogin, [
     check('title').escape().trim().isLength({ min: 3 }).withMessage('Must be at least 3 chars long'),
     check('content').unescape().trim().isLength({ min: 10 }).withMessage('Must be at least 10 chars long'),
     check('summary').trim().isLength({ min: 10 }).withMessage('Must be at least 10 chars long'),
@@ -132,13 +136,14 @@ router.route('/:id')
 })
 
 router.route('/:id/edit')
-.get(async(req, res) => {
+.get(middleware.redirectLogin, async(req, res) => {
     try {
         const categories = await Category.find()
         const post = await Post.findById(req.params.id).populate('category').exec()
-        let page = {title: 'New Post'}
+        let page = {title: 'Edit Post: ' + post.title}
         const category = {}
-        res.render('post/edit', {page, categories, post, category})
+        const user = res.locals.user
+        res.render('post/edit', {page, categories, post, category, user})
     } catch {
         res.redirect('/')
     }

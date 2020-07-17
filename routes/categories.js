@@ -3,9 +3,10 @@ const router = express.Router()
 const Category = require('../models/category')
 const Post = require('../models/post')
 const { check, validationResult } = require('express-validator')
+const middleware = require('../middleware/login')
 
 router.route('/')
-.post([
+.post(middleware.redirectLogin, [
     check('name')
     .escape()
     .trim()
@@ -28,11 +29,12 @@ router.route('/')
 })
 
 router.route('/new')
-.get(async(req, res) => {
+.get(middleware.redirectLogin, async(req, res) => {
     const categories = await Category.find()
-    let page = {title: 'New Category'}
+    let page = {title: 'Creating a new category'}
     let category = {}
-    res.render('category/new', {page, category, categories})
+    const user = res.locals.user
+    res.render('category/new', {page, category, categories, user})
 })
 
 router.route('/:id')
@@ -41,13 +43,14 @@ router.route('/:id')
         const categories = await Category.find()
         const category = await Category.findById(req.params.id)
         const posts = await Post.find({'category': category._id})
-        let page = {title: 'Show Category ' + category.name}
-        res.render('category/show', {category, page, posts, categories})
+        let page = {title: category.name}
+        const user = res.locals.user
+        res.render('category/show', {category, page, posts, categories, user})
     } catch {
         res.redirect('/')
     }
 })
-.put([
+.put(middleware.redirectLogin, [
     check('name')
     .escape()
     .trim()
@@ -66,7 +69,7 @@ router.route('/:id')
         res.redirect('/')
     }
 })
-.delete(async(req, res) => {
+.delete(middleware.redirectLogin, async(req, res) => {
     try {
         const category = await Category.findByIdAndRemove(req.params.id)
         category ? await Post.deleteMany({'category': category._id}) : res.redirect('/')
@@ -77,12 +80,13 @@ router.route('/:id')
 })
 
 router.route('/:id/edit')
-.get(async(req, res) => {
+.get(middleware.redirectLogin, async(req, res) => {
     try {
         const categories = await Category.find()
         const category = await Category.findById(req.params.id)
-        let page = {title: 'Edit Category ' + category.name}
-        res.render('category/edit', {category, page, categories})
+        let page = {title: 'Edit category: ' + category.name}
+        const user = res.locals.user
+        res.render('category/edit', {category, page, categories, user})
     } catch {
         res.redirect('/')
     }

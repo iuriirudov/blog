@@ -1,0 +1,19 @@
+<section>
+    <div class="container padding-y">
+        <h1><%= page.title %></h1>
+        <% if(user) { %>
+        <ul>
+            <li>Name: <%= user.name %></li>
+            <li>Email: <%= user.email %></li>
+            <li>Admin: <%= user.isAdmin %></li>
+        </ul>
+        <a href="/user/">Home</a>
+        <form action="/user/logout" method="post">
+            <button>Logout</button>
+        </form>
+        <% } else { %>
+        <a href="/user/login">Login</a>
+        <a href="/user/register">Register</a>
+        <% } %>
+    </div>
+</section>

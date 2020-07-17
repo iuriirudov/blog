@@ -27,12 +27,14 @@
                     Total views: <%= post.views %> times
                 </div>
             </div>
+            <% if(user) { %>
             <div class="admin-tools text-center">
                 <a href="/post/<%= post._id %>/edit" class="btn">Edit</a>
                 <form action="/post/<%= post._id %>?_method=DELETE" method="post" class="form-delete">
                     <button type="submit" class="btn btn-red">Delete</button>
                 </form>
             </div>
+            <% } %>
         </div>
     </div>
 </section>

@@ -79,7 +79,7 @@ button {
 .form-row > label {
     display: block;
 }
-.form-row > input[type=text], .form-row > textarea, .form-row > select {
+.form-row > input[type=text], input[type=password], .form-row > textarea, .form-row > select {
     width: 100%;
     font-size: 1rem;
     padding: .8rem;

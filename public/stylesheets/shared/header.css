@@ -37,6 +37,7 @@ nav {
     padding: 0;
     list-style: none;
     overflow: hidden;
+    font-size: 0;
 }
 .menu-nav > li {
     display: block;
