@@ -1,5 +1,5 @@
 {
-  "name": "blog",
+  "name": "CodeMe",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -20,9 +20,9 @@
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",
     "express-session": "^1.17.1",
-    "express-validator": "^6.5.0",
+    "express-validator": "^6.6.0",
     "method-override": "^3.0.0",
-    "mongoose": "^5.9.18",
+    "mongoose": "^5.9.24",
     "uuid": "^8.2.0"
   }
 }
