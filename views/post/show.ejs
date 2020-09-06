@@ -15,14 +15,7 @@
                 <p><%- post.content %></p>
             </div>
             <div class="article-bottom">
-                <div class="article-tags">
-                    <% if(post.tags.length > 0) { %>
-                        Tags:
-                        <% post.tags.forEach(tag => { %>
-                            <a href="/post/?tag=<%= tag %>" class="transition"><%= tag %></a>
-                        <% }) %>
-                    <% } %>
-                </div>
+                
                 <div>
                     Total views: <%= post.views %> times
                 </div>
