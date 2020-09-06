@@ -16,7 +16,7 @@
             </div>
             <div class="article-bottom">
                 <div class="article-tags">
-                    <% if(post.tags.length > 0 && post.tags !== '') { %>
+                    <% if(post.tags.length > 0 && post.tags != '') { %>
                         Tags:
                         <% post.tags.forEach(tag => { %>
                             <a href="/post/?tag=<%= tag %>" class="transition"><%= tag %></a>
