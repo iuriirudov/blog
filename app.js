@@ -26,7 +26,7 @@ app.set('views', __dirname + '/views')
 app.set('layout', 'layout')
 app.use(expressLayouts)
 app.use(methodOverride('_method'))
-app.use('/static', express.static(path.join(__dirname, 'public')))
+app.use('/static', express.static(path.join(__dirname, '/public')))
 app.use(bodyParser.urlencoded({limit: '10mb', extended: false}))
 
 app.use(session({
