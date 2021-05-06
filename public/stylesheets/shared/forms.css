@@ -5,7 +5,7 @@ input, select, textarea {
 button {
     font-family: var(--body-font-family);
 }
-.header-form > input {
+.header-form input {
     border: 0;
     border-radius: 5px 0 0 20px;
     padding: .8rem 1rem;
@@ -14,10 +14,21 @@ button {
     width: 150px;
     -webkit-transition: width .35s ease-in-out;
     transition: width .35s ease-in-out;
+    margin: 0;
+}
+
+.header-form button {
+    cursor: pointer;
+    border: 0;
+    border-radius: 0 20px 10px 0;
+    padding: .8rem 1rem;
+    background-color: #E9C46A;
+    font-size: 1rem;
+    margin: 0;
 }
 
 @media (min-width: 800px) {
-    .header-form > input:focus {
+    .header-form input:focus {
         width: 300px;
     }
 }
@@ -25,26 +36,13 @@ button {
     .header-form {
         padding-bottom: 1rem;
     }
-    .header-form > input {
-        border-radius: 0;
-    }
-    .header-form > button {
-        border-radius: 0;
-    }
 }
-.header-form > button {
-    cursor: pointer;
-    border: 0;
-    border-radius: 0 20px 10px 0;
-    padding: .8rem 1rem;
-    background-color: #E9C46A;
-    font-size: 1rem;
-}
-.header-form > button:hover {
+
+.header-form button:hover {
     background-color: #F4A261;
 }
 
-.header-form > button:focus, .header-form > input:focus {
+.header-form button:focus, .header-form input:focus {
     outline: none;
 }
 
