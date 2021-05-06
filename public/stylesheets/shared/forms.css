@@ -21,6 +21,11 @@ button {
         width: 300px;
     }
 }
+@media (max-width: 450px) {
+    .header-form {
+        padding-bottom: 1rem;
+    }
+}
 .header-form > button {
     cursor: pointer;
     border: 0;
