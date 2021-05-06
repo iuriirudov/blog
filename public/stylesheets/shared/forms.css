@@ -25,11 +25,17 @@ button {
     .header-form {
         padding-bottom: 1rem;
     }
+    .header-form > input {
+        border-radius: 0;
+    }
+    .header-form > button {
+        border-radius: 0;
+    }
 }
 .header-form > button {
     cursor: pointer;
     border: 0;
-    border-radius: 0 20px 10px 0;;
+    border-radius: 0 20px 10px 0;
     padding: .8rem 1rem;
     background-color: #E9C46A;
     font-size: 1rem;
